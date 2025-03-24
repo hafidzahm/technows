@@ -14,7 +14,12 @@ class UserController {
             let data = await User.create({
                 name, email, password
             })
-            res.json(data)
+            data = {
+                id: data.id,
+                name: data.name,
+                email: data.email
+            }
+            res.status(201).json(data)
           
         } catch (error) {
             next(error)
