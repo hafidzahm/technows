@@ -14,6 +14,7 @@ app.get('/users', (req, res, next) => {
   res.send('PortalIndo')
 })
 app.post('/users', UserController.registerUser)
+app.post('/login', UserController.loginUser)
 
 app.use(errorHandling)
 
