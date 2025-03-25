@@ -27,6 +27,18 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    title: {
+      type: DataTypes.STRING
+    },
+    thumb: {
+      type: DataTypes.STRING
+    }, 
+    author: {
+      type: DataTypes.STRING
+    }, 
+    tag: {
+      type: DataTypes.STRING
+    },
     key: {
       type: DataTypes.STRING,
       allowNull: false,

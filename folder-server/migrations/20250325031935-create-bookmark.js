@@ -18,6 +18,18 @@ module.exports = {
           key: 'id'
         }
       },
+      title: {
+        type: Sequelize.STRING
+      },
+      thumb: {
+        type: Sequelize.STRING
+      }, 
+      author: {
+        type: Sequelize.STRING
+      }, 
+      tag: {
+        type: Sequelize.STRING
+      },
       key: {
         allowNull: false,
         allowEmpty: false,
