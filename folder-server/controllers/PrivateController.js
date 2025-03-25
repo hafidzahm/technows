@@ -2,13 +2,16 @@ const {Bookmark} = require('../models')
 class PrivateController {
     static async getMyBookmark(req, res, next) {
         try {
+           
            let data = await Bookmark.findAll({
             where:{
                 UserId: 1 //
             }
            })
-           res.json(data[0].dataValues)
-           console.log(data[0]);
+           data = data.map(el => el.dataValues)
+           res.json(data)
+           console.log(data);
+           console.log('Semua booknark user');
         } catch (error) {
             next(error)
         }
