@@ -13,6 +13,20 @@ class PrivateController {
             next(error)
         }
     }
+
+    static async addBookmark(req, res, next) {
+        try {
+            let {key} = req.query
+            let userId = 1
+            let data = await Bookmark.create({
+                UserId: userId,
+                key
+            })
+            res.status(201).json(data)
+        } catch (error) {
+            next(error)
+        }
+    }
 }
 
 module.exports = PrivateController;
