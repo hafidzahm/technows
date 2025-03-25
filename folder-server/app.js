@@ -5,6 +5,7 @@ const errorHandling = require("./middleware/errorHandling");
 const NewsController = require("./controllers/NewsController");
 const PrivateController = require("./controllers/PrivateController");
 const guardLoginMiddleware = require("./middleware/guardLogin");
+const authorizationMiddleware = require("./middleware/authorizationMiddleware");
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -27,7 +28,7 @@ app.get("/bookmarks", guardLoginMiddleware, PrivateController.getMyBookmark);
 // MENAMBAH KE DAFTAR BOOKMARK
 app.post("/bookmarks", guardLoginMiddleware, PrivateController.addBookmark);
 // MENGHAPUS DARI DAFTAR BOOKMARK
-app.delete("/bookmarks/:bookmarkId", guardLoginMiddleware, PrivateController.deleteBookmark);
+app.delete("/bookmarks/:bookmarkId", guardLoginMiddleware, authorizationMiddleware, PrivateController.deleteBookmark);
 
 // ----------------------------------------------------------
 // ======================ERROR HANDLING======================
