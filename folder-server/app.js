@@ -11,11 +11,23 @@ app.use(express.json())
 app.get('/', (req, res, next) => {
   res.json('hello woOoOoOOoorld!')
 })
+
 app.post('/users', UserController.registerUser)
 app.post('/login', UserController.loginUser)
 app.get('/tech', NewsController.getAllNews)
 app.get('/detail', NewsController.getDetailNews)
+// ---------------------------------------------------------
+// =========MIDDLEWARE AUTHENTICATION AND AUTHORIZATION=====
+// ---------------------------------------------------------
 
+// MELIHAT SEMUA BERITA YG DIBOOKMARK USER
+// MENAMBAH KE DAFTAR BOOKMARK
+// MENGHAPUS DARI DAFTAR BOOKMARK
+
+
+// ----------------------------------------------------------
+// ======================ERROR HANDLING======================
+// ----------------------------------------------------------
 app.use(errorHandling)
 
 module.exports = app
