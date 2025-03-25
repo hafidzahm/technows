@@ -21,10 +21,12 @@ app.post("/users", UserController.registerUser);
 app.post("/login", UserController.loginUser);
 app.get("/news", NewsController.getAllNews);
 app.get("/details", NewsController.getDetailNews);
+
 // ---------------------------------------------------------
 // =========MIDDLEWARE AUTHENTICATION AND AUTHORIZATION=====
 // ---------------------------------------------------------
-
+// SUMMARIZE NEWS
+app.get("/details-summarize", NewsController.getSummarizeNews);
 // MELIHAT SEMUA BERITA YG DIBOOKMARK USER
 app.get("/bookmarks", guardLoginMiddleware, PrivateController.getMyBookmark);
 // MENAMBAH KE DAFTAR BOOKMARK
