@@ -3,10 +3,10 @@ const {Bookmark} = require('../models');
 class PrivateController {
     static async getMyBookmark(req, res, next) {
         try {
-            
+            let {id} = req.user
            let data = await Bookmark.findAll({
             where:{
-                UserId: 1 //
+                UserId: id //
             }
            })
            data = data.map(el => el.dataValues)
@@ -22,13 +22,14 @@ class PrivateController {
     static async addBookmark(req, res, next) {
         try {
             let {key} = req.query
+            let {id} = req.user
             let dataNews = await http.get('/api/tech/news')
             let findedData = dataNews.data.find(el => el.key === key)
             console.log(findedData, 'functoin');
             let {title, thumb, author, tag} = findedData
            
             
-            let userId = 1
+            let userId = id
             let data = await Bookmark.create({
                 UserId: userId,
                 title, thumb, author, tag,
@@ -43,7 +44,14 @@ class PrivateController {
     static async deleteBookmark(req, res, next) {
         try {
             let {bookmarkId} = req.params
-            let data = await Bookmark.findByPk(+bookmarkId)
+            let {id} = req.user
+            let data = await Bookmark.findOne({
+                where: {
+                    UserId: +id,
+                    id: +bookmarkId
+                }
+            })
+            console.log(data);
             if (!data) {
                 throw {name: 'NotFound', message: 'Bookmark not found'}
             }
