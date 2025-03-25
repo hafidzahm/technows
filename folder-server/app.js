@@ -8,6 +8,7 @@ const guardLoginMiddleware = require("./middleware/guardLogin");
 const authorizationMiddleware = require("./middleware/authorizationMiddleware");
 const app = express();
 
+app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
