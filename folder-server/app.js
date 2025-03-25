@@ -9,10 +9,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 app.get('/', (req, res, next) => {
-  res.send('PortalIndo')
-})
-app.get('/users', (req, res, next) => {
-  res.send('PortalIndo')
+  res.json('hello woOoOoOOoorld!')
 })
 app.post('/users', UserController.registerUser)
 app.post('/login', UserController.loginUser)
