@@ -5,12 +5,13 @@ async function authorizationMiddleware(req, res, next) {
         let {bookmarkId} = req.params
 
         let bookmark = await Bookmark.findByPk(bookmarkId)
-        console.log(bookmark, '<--------authorization');
-        console.log(bookmark.UserId, '<--------bookmarkUserId');
-        console.log(id, '<--------loginUserId');
         if(!bookmark) {
             throw {name: 'NotFound', message: 'Bookmark not found'}
         }
+
+        console.log(bookmark, '<--------authorization');
+        console.log(bookmark.UserId, '<--------bookmarkUserId');
+        console.log(id, '<--------loginUserId');
 
         if(bookmark.UserId !== id) {
             throw {name: 'Unauthorized', message: 'You are not authorized'}
