@@ -50,6 +50,10 @@ module.exports = (sequelize, DataTypes) => {
           msg: "Key is required"
         }
       }
+    },
+    statusRead: {
+      type: DataTypes.BOOLEAN,
+    defaultValue: false
     }
   }, {
     sequelize,
