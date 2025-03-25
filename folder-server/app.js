@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+var cors = require('cors')
 const UserController = require("./controllers/UserController");
 const errorHandling = require("./middleware/errorHandling");
 const NewsController = require("./controllers/NewsController");
