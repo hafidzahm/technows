@@ -26,6 +26,8 @@ app.get('/bookmark', PrivateController.getMyBookmark)
 // MENAMBAH KE DAFTAR BOOKMARK
 app.post('/bookmark', PrivateController.addBookmark)
 // MENGHAPUS DARI DAFTAR BOOKMARK
+app.delete('/bookmark/:bookmarkId', PrivateController.deleteBookmark)
+
 
 
 // ----------------------------------------------------------

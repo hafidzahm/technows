@@ -27,6 +27,21 @@ class PrivateController {
             next(error)
         }
     }
+
+    static async deleteBookmark(req, res, next) {
+        try {
+            let {bookmarkId} = req.params
+            let data = await Bookmark.findByPk(+bookmarkId)
+            if (!data) {
+                throw {name: 'NotFound', message: 'Bookmark not found'}
+            }
+            await data.destroy()
+
+            res.json({message: 'Bookmark success deleted.'})
+        } catch (error) {
+            next(error)
+        }
+    }
 }
 
 module.exports = PrivateController;

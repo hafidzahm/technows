@@ -12,6 +12,9 @@ function errorHandling(err, req, res, next) {
   if(err.name === "NotEmpty") {
     res.status(400).json({message : err.message});
   }
+  if(err.name === "NotFound") {
+    res.status(404).json({message : err.message});
+  }
 }
 
 module.exports = errorHandling;
