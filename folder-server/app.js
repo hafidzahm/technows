@@ -3,6 +3,7 @@ const express = require('express')
 const UserController = require('./controllers/UserController')
 const errorHandling = require('./middleware/errorHandling')
 const NewsController = require('./controllers/NewsController')
+const PrivateController = require('./controllers/PrivateController')
 const app = express()
 
 app.use(express.urlencoded({ extended: true }))
@@ -21,6 +22,7 @@ app.get('/detail', NewsController.getDetailNews)
 // ---------------------------------------------------------
 
 // MELIHAT SEMUA BERITA YG DIBOOKMARK USER
+app.get('/bookmark', PrivateController.getMyBookmark)
 // MENAMBAH KE DAFTAR BOOKMARK
 // MENGHAPUS DARI DAFTAR BOOKMARK
 

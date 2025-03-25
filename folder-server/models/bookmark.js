@@ -11,11 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Bookmark.belongsTo(models.User, {foreignKey: 'UserId'})
     }
   }
   Bookmark.init({
     UserId: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       validate:{
         notEmpty:{
           msg: "UserId is required"
@@ -27,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     key: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate:{
         notEmpty:{
           msg: "Key is required"
