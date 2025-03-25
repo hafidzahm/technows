@@ -62,6 +62,30 @@ class PrivateController {
             next(error)
         }
     }
+    
+    static async changeStatusBookmark(req, res, next) {
+        try {
+            let {bookmarkId} = req.params
+            let data = await Bookmark.findByPk(bookmarkId)
+            if (!data) {
+                throw {name: 'NotFound', message: 'Bookmark not found'}
+            }
+            let status = data.statusRead
+            let readed;
+            if (status === false) {
+                readed = true
+            } else {
+                readed = false
+            }
+
+            data.update({
+                statusRead: readed
+            })
+            res.json(data)
+        } catch (error) {
+            next(error)
+        }
+    }
 }
 
 module.exports = PrivateController;

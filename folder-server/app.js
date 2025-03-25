@@ -33,6 +33,8 @@ app.get("/bookmarks", guardLoginMiddleware, PrivateController.getMyBookmark);
 app.post("/bookmarks", guardLoginMiddleware, PrivateController.addBookmark);
 // MENGHAPUS DARI DAFTAR BOOKMARK
 app.delete("/bookmarks/:bookmarkId", guardLoginMiddleware, authorizationMiddleware, PrivateController.deleteBookmark);
+// MENGUBAH STATUS BOOKMARK MENJADI SUDAH DIBACA
+app.put("/bookmarks/:bookmarkId", guardLoginMiddleware, authorizationMiddleware, PrivateController.changeStatusBookmark);
 
 // ----------------------------------------------------------
 // ======================ERROR HANDLING======================
