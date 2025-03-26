@@ -1,16 +1,18 @@
 import "./App.css";
-
+import { BrowserRouter, Routes, Route } from "react-router";
 function App() {
   return (
-    <div className="card">
-      <div className="card-body">
-        <div className="card-title">
-          <h1>judul</h1>
-        </div>
-        <p>Ini adalah paragraf pertama</p>
-        <p>Ini adalah paragraf kedua</p>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<div>Login</div>} />
+        <Route path="/register" element={<div>Register</div>} />
+        <Route path="/bookmarks" element={<div>My Bookmark</div>} />
+        <Route path="/bookmarks:id" element={<div>My Bookmark delete/change path</div>} />
+        <Route path="/news" element={<div>All news</div>} />
+        <Route path="/detail-news" element={<div>Detail news</div>} />
+        <Route path="/detail-summarize" element={<div>Summarize news</div>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
