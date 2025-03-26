@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router";
 import http from "../helper/http";
+import Swal from "sweetalert2";
 export default function Details() {
   let [params, setParams] = useSearchParams();
   let [isLoading, setIsLoading] = useState(false);
@@ -50,6 +51,15 @@ export default function Details() {
       navigate("/bookmarks")
     } catch (error) {
       console.log(error);
+      if (error.status === 401) {
+        console.log(error);
+        Swal.fire({
+          title: "Ups!",
+          text: `Silakan login dulu untuk memakai fitur Save to Bookmarks`,
+          icon: "error",
+        });
+        navigate("/login");
+      }
     }
   }
 
