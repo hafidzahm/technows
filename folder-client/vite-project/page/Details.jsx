@@ -5,7 +5,8 @@ export default function Details() {
   let [params, setParams] = useSearchParams();
   let [isLoading, setIsLoading] = useState(false);
   let [content, setContent] = useState([]);
-  let navigate = useNavigate()
+  let [title, setTitle] = useState("");
+  let navigate = useNavigate();
   useEffect(() => {
     getDetailById();
   }, []);
@@ -19,7 +20,7 @@ export default function Details() {
       console.log(response, "<------response");
       console.log(response.data.results.content, "<------response");
       let data = response.data.results.content;
-
+      setTitle(response.data.results.title);
       setContent(data);
       parsingContent();
       setIsLoading(false);
@@ -29,8 +30,8 @@ export default function Details() {
   }
 
   async function onSummarize() {
-    console.log(params.get('key'));
-    navigate(`/summarize?key=${params.get('key')}`)
+    console.log(params.get("key"));
+    navigate(`/summarize?key=${params.get("key")}`);
   }
 
   async function parsingContent() {
@@ -41,23 +42,30 @@ export default function Details() {
 
   return (
     <>
-      <div>Details: {params.get("key")}</div>
-      {isLoading ? <span>Loading...</span> : <span>finish loading</span>}
-      <div className="max-w-2xl m-auto">
-        <button
-          onClick={onSummarize}
-          className="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-        >
-          Summarize
-        </button>
-        {content?.map((el, index) => {
-          if (el.startsWith("http")) {
-            return <img key={index} src={el}></img>;
-          } else {
-            return <div key={index}>{el}</div>;
-          }
-        })}
-      </div>
+      {isLoading ? (
+        <div className=" w-10 m-auto">
+          <span>Loading...</span>
+        </div>
+      ) : (
+        <div className="max-w-2xl m-auto">
+          <button
+            onClick={onSummarize}
+            className=" px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+          >
+            Summarize with AI
+          </button>
+          <div className="text-4xl mt-5">{title}</div>
+          <div>
+            {content?.map((el, index) => {
+              if (el.startsWith("http")) {
+                return <img key={index} src={el} className="p-5"></img>;
+              } else {
+                return <div key={index} className="p-5">{el}</div>;
+              }
+            })}
+          </div>
+        </div>
+      )}
     </>
   );
 }
