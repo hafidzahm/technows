@@ -70,7 +70,7 @@ export default function Details() {
   }
 
   return (
-    <>
+    <div className="min-h-screen">
       {isLoading ? (
         <div className=" w-10 m-auto">
           <span>Loading...</span>
@@ -104,6 +104,6 @@ export default function Details() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

@@ -71,7 +71,8 @@ export default function Bookmarks() {
     }
   }
   return (
-    <div className="flex flex-row flex-wrap w-5xl m-auto justify-center gap-2">
+    <div className="min-h-screen">
+ <div className="flex flex-row flex-wrap w-5xl m-auto justify-center gap-2">
       {data.length > 0 ? data.map((el) => {
         return (
           <CardBookmark
@@ -88,5 +89,7 @@ export default function Bookmarks() {
       <h1 className="text-2xl">Bookmark Kosong</h1>
       </div>}
     </div>
+    </div>
+   
   );
 }

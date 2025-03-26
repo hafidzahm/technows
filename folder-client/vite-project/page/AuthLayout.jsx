@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router";
 import Navbar from "./Navbar";
+import Footer from "../components/Footer";
 export default function AuthLayout() {
   const navigate = useNavigate()
   useEffect(() => {
@@ -17,8 +18,8 @@ export default function AuthLayout() {
   return (
     <>
       <Navbar/>
-
       <Outlet />
+      <Footer/>
     </>
   );
 }

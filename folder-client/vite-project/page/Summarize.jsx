@@ -37,7 +37,7 @@ export default function Summarize() {
     }
   }
   return (
-    <>
+    <div className="min-h-screen">
     {Object.keys(data).length > 1 ? <div className="w-2xl m-auto border-gray-500 bg-gray-200 p-5">
         <div className="text-2xl mb-3">Hasil rangkuman:</div>
       <div className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300"><span>Kapan berita tersebut terjadi atau diberitakan?</span></div>
@@ -54,6 +54,6 @@ export default function Summarize() {
         <p>{data.how}</p>
       </div> : <div className="w-100 m-auto">Tunggu sebentar... Sedang merangkum berita..</div>} 
       
-    </>
+    </div>
   );
 }
