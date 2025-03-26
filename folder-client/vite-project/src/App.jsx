@@ -1,11 +1,12 @@
 import AuthLayout from "../page/AuthLayout";
+import Login from "../page/Login";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<div>Login</div>} />
+        <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<div>Register</div>} />
         <Route path="/" element={<div>All news</div>} />
         {/* ---------LOGIN------------ */}
