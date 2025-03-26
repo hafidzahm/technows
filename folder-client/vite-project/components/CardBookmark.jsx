@@ -67,9 +67,12 @@ export default function CardBookmark(props) {
           </div>
 
           <div className="p-5">
+            <Link to={`/details?key=${data.key}`}>
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
               {data.title}
             </h5>
+            </Link>
+            
             <div>
               <p className="mb-3 font-normal text-gray-500">{data.author}</p>
             </div>
