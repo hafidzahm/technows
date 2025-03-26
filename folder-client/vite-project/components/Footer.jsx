@@ -8,7 +8,10 @@ export default function Footer() {
       <Link to="https://github.com/hafidzahm" className="hover:underline">
       TechNows™
         </Link>
-      . All Rights Reserved.
+      <span>. All Rights Reserved, featuring Summarize with AI powered by Google Gemini  </span>
+      <Link to="https://ai.google.dev/gemini-api/docs/quickstart?hl=id&lang=node" className="hover:underline">
+      model-2.0-flash.
+      </Link>
     </span>
     <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-600">
       <li>
