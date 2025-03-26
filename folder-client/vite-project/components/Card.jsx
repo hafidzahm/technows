@@ -2,51 +2,60 @@ import { useEffect, useState } from "react";
 
 export default function Card(props) {
   let { data, submitKey, saveKey, loading } = props;
-  let [isLogin, setIsLogin] = useState(false)
+  let [isLogin, setIsLogin] = useState(false);
   useEffect(() => {
-    checkLogin()
-  }, [])
+    checkLogin();
+  }, []);
 
   function checkLogin() {
-    let token = localStorage.getItem('access_token')
+    let token = localStorage.getItem("access_token");
     if (token) {
-      setIsLogin(true)
-    } 
+      setIsLogin(true);
+    }
   }
 
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-      <img
-        className="rounded-t-lg object-cover w-full h-48"
-        src={data.thumb}
-        alt=""
-      />
+    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm flex flex-col justify-between">
+      <div>
+        <img
+          className="rounded-t-lg object-cover w-full h-48"
+          src={data.thumb}
+          alt=""
+        />
+      </div>
 
-      <div className="p-5">
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <div className="p-4">
+        <h5 className="text-2xl font-bold tracking-tight text-gray-900">
           {data.title}
         </h5>
-
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+      </div>
+      <div className="p-4">
+        <p className="mb-3 font-normal text-gray-700">
           {data.desc}
         </p>
-        <div className="flex flex-col gap-2">
+      </div>
+
+      <div className="flex flex-col gap-2 p-4">
         <button
-          onClick={() => {submitKey({id: data.key})}}
+          onClick={() => {
+            submitKey({ id: data.key });
+          }}
           className=" px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Baca
         </button>
-       {
-        isLogin ?  <button
-        onClick={() => {saveKey({id: data.key})}}
-        className=" px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-      >
-        
-        Simpan ke Bookmark
-      </button> : ''
-       }
-        </div>
+        {isLogin ? (
+          <button
+            onClick={() => {
+              saveKey({ id: data.key });
+            }}
+            className=" px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Simpan ke Bookmark
+          </button>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
