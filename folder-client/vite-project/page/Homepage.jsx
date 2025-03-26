@@ -7,6 +7,7 @@ import { useNavigate } from "react-router"
 export default function Homepage() {
     const [news, setNews] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const [isSaving, setIsSaving] = useState(false)
     const [isLogin, setIsLogin] = useState(false)
     let navigate = useNavigate()
     useEffect(() => {
@@ -51,7 +52,7 @@ export default function Homepage() {
     async function saveNews(key) {
         try {
            console.log(key);
-           
+           setIsSaving(true)
            let token = localStorage.getItem('access_token')
            let response = await http.post(`/bookmarks?key=${key.id}`, {}, {
             headers: {
@@ -60,6 +61,7 @@ export default function Homepage() {
             timeout: 10000
            })
            console.log(response);
+           setIsSaving(false)
            navigate('/bookmarks')
         } catch (error) {
             console.log(error);
@@ -70,7 +72,7 @@ export default function Homepage() {
         <div className="flex flex-row flex-wrap justify-center w-5xl gap-5 m-auto">
         {
             isLoading ? <div>Loading...</div> : news.map(el => {
-                return <Card key={el.key} data={el} submitKey={getDetailNews} saveKey={saveNews}/>
+                return <Card key={el.key} data={el} submitKey={getDetailNews} saveKey={saveNews} loading={isSaving}/>
             })
         }
         </div>
