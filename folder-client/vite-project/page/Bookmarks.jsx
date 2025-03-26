@@ -42,7 +42,7 @@ export default function Bookmarks() {
         console.log(body);
     }
     return (
-        <div>
+        <div className="flex flex-row flex-wrap w-5xl m-auto justify-center gap-2">
             {
                 data.map(el => {
                     return <CardBookmark key={el.id} data={el} submitRead={submitRead} changeStatus={changeStatus} deleteBookmark={deleteBookmark} />
