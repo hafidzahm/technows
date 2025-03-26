@@ -19,6 +19,7 @@ app.get("/", (req, res, next) => {
 
 app.post("/users", UserController.registerUser);
 app.post("/login", UserController.loginUser);
+app.post('/google-login', UserController.googleLogin)
 app.get("/news", NewsController.getAllNews);
 app.get("/details", NewsController.getDetailNews);
 
