@@ -94,6 +94,14 @@ afterAll(async () => {
   });
 });
 
+describe('HELLOWORLD', () => {
+    test('Hello world', async () => {
+        let response = await request(app)
+        .get('/')
+        expect(response.body.message).toEqual('Hello world')
+    })
+})
+
 describe("REGISTER USER", () => {
   test("create new user with complete input /201", async () => {
     let user = {

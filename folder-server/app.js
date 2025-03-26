@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/", (req, res, next) => {
-  res.json("hello woOoOoOOoorld!");
+  res.json({message: "Hello world"});
 });
 
 app.post("/users", UserController.registerUser);
