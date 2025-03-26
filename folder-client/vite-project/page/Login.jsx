@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import http from "../helper/http";
 export default function Login() {
   const [email, setTitle] = useState("");
   const [password, setPassword] = useState("");
@@ -11,6 +12,15 @@ export default function Login() {
   function changePassword(event) {
     setPassword(event.target.value);
     console.log(event.target.value);
+  }
+
+  async function submitLogin(body) {
+    try {
+        let response = await http.post('/login', body)
+        console.log(response);
+    } catch (error) {
+        console.log(error);
+    }
   }
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
@@ -43,7 +53,9 @@ export default function Login() {
               onChange={changePassword}
             />
           </div>
-          <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors">
+          <button onClick={() => {submitLogin({email, password})}}
+          type="button"
+          className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors">
             Gas masuk
           </button>
         </form>
