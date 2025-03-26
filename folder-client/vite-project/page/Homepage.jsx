@@ -47,12 +47,28 @@ export default function Homepage() {
         }
        
     }
+
+    async function saveNews(key) {
+        try {
+           console.log(key);
+           let token = localStorage.getItem('access_token')
+           let response = await http.post(`/bookmarks?key=${key.id}`, {}, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+            timeout: 10000
+           })
+           console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
+    }
     return(
         <>
         <div className="flex flex-row flex-wrap justify-center w-5xl gap-5 m-auto">
         {
             isLoading ? <div>Loading...</div> : news.map(el => {
-                return <Card key={el.key} data={el} submitKey={getDetailNews}/>
+                return <Card key={el.key} data={el} submitKey={getDetailNews} saveKey={saveNews}/>
             })
         }
         </div>
