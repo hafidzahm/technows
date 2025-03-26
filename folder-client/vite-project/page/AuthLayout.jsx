@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Outlet, useNavigate } from "react-router";
+import Navbar from "./Navbar";
 export default function AuthLayout() {
   const navigate = useNavigate()
   useState(() => {
@@ -15,9 +16,7 @@ export default function AuthLayout() {
   }
   return (
     <>
-      <div>
-        <h1>Auth layout</h1>
-      </div>
+      <Navbar/>
 
       <Outlet />
     </>

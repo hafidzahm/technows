@@ -1,4 +1,5 @@
 import AuthLayout from "../page/AuthLayout";
+import Homepage from "../page/Homepage";
 import Login from "../page/Login";
 import Register from "../page/Register";
 import "./App.css";
@@ -9,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
-        <Route path="/" element={<div>All news</div>} />
+        <Route path="/" element={<Homepage/>} />
         {/* ---------LOGIN------------ */}
         <Route element={<AuthLayout />}>
           <Route path="/bookmarks" element={<div>My Bookmark</div>} />
