@@ -38,8 +38,19 @@ export default function Bookmarks() {
         console.log(response);
         getMyBookmark()
     }
-    function deleteBookmark(body) {
-        console.log(body);
+    async function deleteBookmark(body) {
+        try {
+        let token = localStorage.getItem('access_token')
+            let response = await http.delete(`/bookmarks/${body.id}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            console.log(response);
+            getMyBookmark()
+        } catch (error) {
+            console.log(error);
+        }
     }
     return (
         <div className="flex flex-row flex-wrap w-5xl m-auto justify-center gap-2">
