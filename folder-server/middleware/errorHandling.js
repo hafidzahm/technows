@@ -15,6 +15,9 @@ function errorHandling(err, req, res, next) {
   if(err.name === "NotEmpty") {
     return res.status(400).json({message : err.message});
   }
+  if(err.name === "Forbidden") {
+    return res.status(403).json({message : err.message});
+  }
   if(err.name === "NotFound") {
     return res.status(404).json({message : err.message});
   }

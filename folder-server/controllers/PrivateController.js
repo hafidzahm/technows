@@ -57,7 +57,7 @@ class PrivateController {
             }
             await data.destroy()
 
-            res.json({message: 'Bookmark success deleted.'})
+            res.status(200).json({message: 'Bookmark success deleted.'})
         } catch (error) {
             next(error)
         }
@@ -81,7 +81,7 @@ class PrivateController {
             data.update({
                 statusRead: readed
             })
-            res.json(data)
+            res.status(200).json({message: `statusRead success updated to ${readed}`})
         } catch (error) {
             next(error)
         }

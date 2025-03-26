@@ -35,7 +35,6 @@ class NewsController {
       const prompt = `tolong rangkum berita ini (${content}) dengan format 5W+1H dalam format json {when: <kapan berita tsb terjadi>, what:<apa yang terjadi, apa teknologi yang diberitakan>, where: <dimana berita tsb terjadi>, who: <siapa yang disorot dan terlibat dalam berita>, why: <kenapa berita tsb terjadi>, how: <bagaimana berita tsb terjadi, atau sebab>}`;
 
       const result = await model.generateContent(prompt);
-      console.log(result.response.text());
       let dataOutput = result.response.text().replace(/```json/, '').replace(/```/g, '')
       dataOutput = JSON.parse(dataOutput)
       

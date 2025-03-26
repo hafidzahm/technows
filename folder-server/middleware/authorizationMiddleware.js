@@ -14,7 +14,7 @@ async function authorizationMiddleware(req, res, next) {
         console.log(id, '<--------loginUserId');
 
         if(bookmark.UserId !== id) {
-            throw {name: 'Unauthorized', message: 'You are not authorized'}
+            throw {name: 'Forbidden', message: 'You are not authorized'}
         }
         next()
     } catch (error) {

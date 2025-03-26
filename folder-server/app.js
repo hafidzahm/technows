@@ -26,7 +26,7 @@ app.get("/details", NewsController.getDetailNews);
 // =========MIDDLEWARE AUTHENTICATION AND AUTHORIZATION=====
 // ---------------------------------------------------------
 // SUMMARIZE NEWS
-app.get("/details-summarize", NewsController.getSummarizeNews);
+app.get("/details-summarize", guardLoginMiddleware, NewsController.getSummarizeNews);
 // MELIHAT SEMUA BERITA YG DIBOOKMARK USER
 app.get("/bookmarks", guardLoginMiddleware, PrivateController.getMyBookmark);
 // MENAMBAH KE DAFTAR BOOKMARK
