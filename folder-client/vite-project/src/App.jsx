@@ -1,5 +1,6 @@
 import AuthLayout from "../page/AuthLayout";
 import Login from "../page/Login";
+import Register from "../page/Register";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router";
 function App() {
@@ -7,7 +8,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login/>} />
-        <Route path="/register" element={<div>Register</div>} />
+        <Route path="/register" element={<Register/>} />
         <Route path="/" element={<div>All news</div>} />
         {/* ---------LOGIN------------ */}
         <Route element={<AuthLayout />}>
