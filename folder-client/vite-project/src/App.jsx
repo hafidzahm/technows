@@ -1,4 +1,5 @@
 import AuthLayout from "../page/AuthLayout";
+import Bookmarks from "../page/Bookmarks";
 import Details from "../page/Details";
 import Homepage from "../page/Homepage";
 import Login from "../page/Login";
@@ -20,7 +21,7 @@ function App() {
         </Route>
         {/* ---------LOGIN------------ */}
         <Route element={<AuthLayout />}>
-          <Route path="/bookmarks" element={<div>My Bookmark</div>} />
+          <Route path="/bookmarks" element={<Bookmarks/>} />
           <Route
             path="/bookmarks:id"
             element={<div>My Bookmark delete/change path</div>}
