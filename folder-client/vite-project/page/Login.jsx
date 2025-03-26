@@ -1,12 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import http from "../helper/http";
 import Swal from "sweetalert2";
 export default function Login() {
+    useEffect(() => {
+        guardLogin()
+    }, [])
+
   const [email, setTitle] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate()
 
+  function guardLogin() {
+    let token = localStorage.getItem('access_token')
+    if (token) {
+      navigate('/bookmarks')
+    }
+  }
   function changeEmail(event) {
     setTitle(event.target.value);
     console.log(event.target.value);
