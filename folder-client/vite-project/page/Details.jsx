@@ -55,7 +55,7 @@ export default function Details() {
             Summarize with AI
           </button>
           <div className="text-4xl mt-5">{title}</div>
-          <div>
+          <div className=" border border-gray-500 mt-5 bg-gray-100">
             {content?.map((el, index) => {
               if (el.startsWith("http")) {
                 return <img key={index} src={el} className="p-5"></img>;
