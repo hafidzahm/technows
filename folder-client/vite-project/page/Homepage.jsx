@@ -51,6 +51,7 @@ export default function Homepage() {
     async function saveNews(key) {
         try {
            console.log(key);
+           
            let token = localStorage.getItem('access_token')
            let response = await http.post(`/bookmarks?key=${key.id}`, {}, {
             headers: {
@@ -59,6 +60,7 @@ export default function Homepage() {
             timeout: 10000
            })
            console.log(response);
+           navigate('/bookmarks')
         } catch (error) {
             console.log(error);
         }
