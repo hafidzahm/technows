@@ -72,7 +72,7 @@ export default function Bookmarks() {
   }
   return (
     <div className="flex flex-row flex-wrap w-5xl m-auto justify-center gap-2">
-      {data.map((el) => {
+      {data.length > 0 ? data.map((el) => {
         return (
           <CardBookmark
             key={el.id}
@@ -82,7 +82,11 @@ export default function Bookmarks() {
             deleteBookmark={deleteBookmark}
           />
         );
-      })}
+      })
+    :
+    <div className="text-center mt-10">
+      <h1 className="text-2xl">Bookmark Kosong</h1>
+      </div>}
     </div>
   );
 }
