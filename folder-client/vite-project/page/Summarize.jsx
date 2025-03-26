@@ -29,7 +29,7 @@ export default function Summarize() {
       if (error.status === 401) {
         console.log(error);
         Swal.fire({
-          title: "Error!",
+          title: "Ups!",
           text: `Silakan login dulu untuk memakai fitur Summarize with AI`,
           icon: "error",
         });
