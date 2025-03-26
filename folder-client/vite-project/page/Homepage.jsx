@@ -7,10 +7,19 @@ import { useNavigate } from "react-router"
 export default function Homepage() {
     const [news, setNews] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const [isLogin, setIsLogin] = useState(false)
     let navigate = useNavigate()
     useEffect(() => {
         fetchData()
-    }, [])
+        login()
+    }, [isLogin])
+
+    function login() {
+        let token = localStorage.getItem('access_token')
+        if (token) {
+            setIsLogin(true)
+        }   
+    }
 
     async function getDetailNews(key) {
         try {

@@ -19,7 +19,7 @@ export default function Navbar() {
   function onLogout() {
     localStorage.removeItem("access_token");
     setLogin(false)
-    navigate('/')
+    navigate('/login')
   }
   return (
     <>
