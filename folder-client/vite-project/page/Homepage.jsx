@@ -72,7 +72,7 @@ export default function Homepage() {
         <div className="flex flex-row flex-wrap justify-center w-5xl gap-5 m-auto">
         {
             isLoading ? <div>Loading...</div> : news.map(el => {
-                return <Card key={el.key} data={el} submitKey={getDetailNews} saveKey={saveNews} loading={isSaving}/>
+                return <Card key={el.key} data={el} submitKey={getDetailNews} saveKey={saveNews}/>
             })
         }
         </div>
