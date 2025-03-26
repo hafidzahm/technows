@@ -15,14 +15,29 @@ export default function Login() {
     );
     // google.accounts.id.prompt()
   }, []);
+  const navigate = useNavigate();
 
-  function handleCredentialResponse(response) {
+  async function handleCredentialResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
+    try {
+      let {data} = await http({
+        method: 'post',
+        url: '/google-login',
+        data: {
+          googleToken: response.credential
+        }
+      })
+      console.log(data);
+      localStorage.setItem("access_token", data.access_token);
+      navigate("/bookmarks");
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const [email, setTitle] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+
 
   function guardLogin() {
     let token = localStorage.getItem("access_token");
