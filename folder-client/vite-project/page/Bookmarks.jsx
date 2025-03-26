@@ -86,7 +86,7 @@ export default function Bookmarks() {
       })
     :
     <div className="text-center mt-10">
-      <h1 className="text-2xl">Bookmark Kosong</h1>
+      <h1 className="text-gray-700">Bookmark Kosong</h1>
       </div>}
     </div>
     </div>

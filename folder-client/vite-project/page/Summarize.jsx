@@ -52,7 +52,7 @@ export default function Summarize() {
         <p>{data.where}</p>
         <div className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300"><span>Spesifikasi teknologi atau objeknya seperti apa?</span></div>
         <p>{data.how}</p>
-      </div> : <div className="w-100 m-auto">Tunggu sebentar... Sedang merangkum berita..</div>} 
+      </div> : <div className="w-100 text-gray-700 m-auto">Tunggu sebentar... Sedang merangkum berita..</div>} 
       
     </div>
   );
