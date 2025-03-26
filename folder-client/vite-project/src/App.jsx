@@ -1,4 +1,5 @@
 import AuthLayout from "../page/AuthLayout";
+import Details from "../page/Details";
 import Homepage from "../page/Homepage";
 import Login from "../page/Login";
 import Register from "../page/Register";
@@ -18,7 +19,7 @@ function App() {
             path="/bookmarks:id"
             element={<div>My Bookmark delete/change path</div>}
           />
-          <Route path="/detail-news" element={<div>Detail news</div>} />
+          <Route path="/details" element={<Details/>} />
           <Route path="/detail-summarize" element={<div>Summarize news</div>} />
         </Route>
       </Routes>
