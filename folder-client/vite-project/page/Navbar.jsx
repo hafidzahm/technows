@@ -92,10 +92,6 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-
-      <div>
-        <h1>Login: {login ? <span>true</span> : <span>false</span>}</h1>
-      </div>
     </>
   );
 }
