@@ -27,11 +27,16 @@ export default function Homepage() {
       }
 
     async function fetchData() {
-        setIsLoading(true)
-        let response = await http.get('/news', {timeout: 10000})
-        console.log(response, '<-----fetchData');
-        setNews(response.data)
-        setIsLoading(false)
+        try {
+            setIsLoading(true)
+            let response = await http.get('/news', {timeout: 10000})
+            console.log(response, '<-----fetchData');
+            setNews(response.data)
+            setIsLoading(false)
+        } catch (error) {
+            console.log(error);
+        }
+       
     }
     return(
         <>
