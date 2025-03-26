@@ -26,6 +26,10 @@ export default function Login() {
     console.log(event.target.value);
   }
 
+  function withoutLogin() {
+    navigate('/')
+  }
+
   async function submitLogin(body) {
     try {
         let response = await http.post('/login', body)
@@ -76,6 +80,11 @@ export default function Login() {
           type="button"
           className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors">
             Gas masuk
+          </button>
+          <button onClick={withoutLogin}
+          type="button"
+          className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors">
+            Liat-liat dulu aja
           </button>
         </form>
         <div className="mt-6 text-center text-sm text-gray-600">
