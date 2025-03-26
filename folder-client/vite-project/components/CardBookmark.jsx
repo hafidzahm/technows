@@ -1,5 +1,6 @@
+import { Link } from "react-router";
 export default function CardBookmark(props) {
-  let { data, submitRead, deleteBookmark, changeStatus } = props;
+  let { data, deleteBookmark, changeStatus } = props;
 
   return (
     <>
@@ -14,22 +15,17 @@ export default function CardBookmark(props) {
        </div>
 
        <div className="p-5">
-         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-500">
+        <Link to={`/details?key=${data.key}`}>
+        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-500">
            {data.title}
          </h5>
+        </Link>
+         
          <div>
-           <p className="mb-3 font-normal text-gray-700">{data.desc}</p>
+           <p className="mb-3 font-normal text-gray-400">{data.author}</p>
          </div>
        </div>
        <div className="flex flex-col gap-2 p-5">
-         <button
-           onClick={() => {
-             submitRead({ id: data.id });
-           }}
-           className=" px-3 py-2 text-sm font-medium text-center text-white bg-blue-400 rounded-lg hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-200"
-         >
-           Baca
-         </button>
          {data.statusRead ? (
            <button
              onClick={() => {
@@ -75,18 +71,10 @@ export default function CardBookmark(props) {
               {data.title}
             </h5>
             <div>
-              <p className="mb-3 font-normal text-gray-700">{data.desc}</p>
+              <p className="mb-3 font-normal text-gray-500">{data.author}</p>
             </div>
           </div>
           <div className="flex flex-col gap-2 p-5">
-            <button
-              onClick={() => {
-                submitRead({ id: data.id });
-              }}
-              className=" px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
-            >
-              Baca
-            </button>
             {data.statusRead ? (
               <button
                 onClick={() => {
