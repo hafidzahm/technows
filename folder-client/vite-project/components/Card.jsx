@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function Card(props) {
-  let { data, submitKey, saveKey, loading } = props;
+  let { data, submitKey, saveKey } = props;
   let [isLogin, setIsLogin] = useState(false);
   useEffect(() => {
     checkLogin();
