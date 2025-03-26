@@ -35,7 +35,6 @@ export default function Homepage() {
     }
     return(
         <>
-        <Navbar/>
         <div className="flex flex-row flex-wrap justify-center w-5xl gap-5 m-auto">
         {
             isLoading ? <div>Loading...</div> : news.map(el => {
