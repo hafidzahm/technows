@@ -1,6 +1,7 @@
 import { useSearchParams } from "react-router"
 import http from "../helper/http"
 import { useEffect, useState } from "react"
+import Swal from "sweetalert2"
 
 export default function Summarize() {
     useEffect(() => {
@@ -10,15 +11,26 @@ export default function Summarize() {
     let [data, setData] = useState({})
 
     async function getSummarize() {
-        let token = localStorage.getItem('access_token')
-        let response = await http.get(`/details-summarize?key=${params.get('key')}`, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            },
-            timeout: 10000
-        })
-        console.log(response);
-        setData(response.data)
+        try {
+            let token = localStorage.getItem('access_token')
+            let response = await http.get(`/details-summarize?key=${params.get('key')}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
+                timeout: 10000
+            })
+            console.log(response);
+            setData(response.data)
+        } catch (error) {
+            console.log(error);
+            console.log(error);
+            Swal.fire({
+              title: "Error!",
+              text: `Silakan login dulu untuk memakai fitur Summarize with AI`,
+              icon: "error"
+            });
+        }
+
     }
     return(
         <>
