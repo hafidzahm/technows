@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router";
 import Navbar from "./Navbar";
 export default function AuthLayout() {
   const navigate = useNavigate()
-  useState(() => {
+  useEffect(() => {
     console.log('-----GUARD LOGIN------');
     guardLogin()
   }, [])
