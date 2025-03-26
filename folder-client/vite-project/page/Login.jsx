@@ -3,18 +3,31 @@ import { Link, useNavigate } from "react-router";
 import http from "../helper/http";
 import Swal from "sweetalert2";
 export default function Login() {
-    useEffect(() => {
-        guardLogin()
-    }, [])
+  useEffect(() => {
+    guardLogin();
+    google.accounts.id.initialize({
+      client_id: import.meta.env.VITE_GOOGLE_CLIENT_API,
+      callback: handleCredentialResponse
+    });
+    google.accounts.id.renderButton(
+      document.getElementById("google-btn"),
+      { theme: "outline", size: "large" }  // customization attributes
+    );
+    // google.accounts.id.prompt()
+  }, []);
+
+  function handleCredentialResponse(response) {
+    console.log("Encoded JWT ID token: " + response.credential);
+  }
 
   const [email, setTitle] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function guardLogin() {
-    let token = localStorage.getItem('access_token')
+    let token = localStorage.getItem("access_token");
     if (token) {
-      navigate('/bookmarks')
+      navigate("/bookmarks");
     }
   }
   function changeEmail(event) {
@@ -27,22 +40,22 @@ export default function Login() {
   }
 
   function withoutLogin() {
-    navigate('/')
+    navigate("/");
   }
 
   async function submitLogin(body) {
     try {
-        let response = await http.post('/login', body)
-        console.log(response);
-        localStorage.setItem('access_token', response.data.access_token)
-        navigate('/bookmarks')
+      let response = await http.post("/login", body);
+      console.log(response);
+      localStorage.setItem("access_token", response.data.access_token);
+      navigate("/bookmarks");
     } catch (error) {
-        console.log(error);
-        Swal.fire({
-          title: "Error!",
-          text: error.response.data.message,
-          icon: "error"
-        });
+      console.log(error);
+      Swal.fire({
+        title: "Error!",
+        text: error.response.data.message,
+        icon: "error",
+      });
     }
   }
   return (
@@ -76,16 +89,31 @@ export default function Login() {
               onChange={changePassword}
             />
           </div>
-          <button onClick={() => {submitLogin({email, password})}}
-          type="button"
-          className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors">
-            Gas masuk
-          </button>
-          <button onClick={withoutLogin}
-          type="button"
-          className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors">
-            Liat-liat dulu aja
-          </button>
+          <div className="flex flex-col items-center gap-2">
+            <button
+              onClick={() => {
+                submitLogin({ email, password });
+              }}
+              type="button"
+              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors"
+            >
+              Gas masuk
+            </button>
+            <button
+              onClick={withoutLogin}
+              type="button"
+              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors"
+            >
+              Liat-liat dulu aja
+            </button>
+            <h1 className="text-sm">atau</h1>
+            <button
+              type="button"
+              id='google-btn'
+            >
+              Login with Google
+            </button>
+          </div>
         </form>
         <div className="mt-6 text-center text-sm text-gray-600">
           <span>Belum punya akun? </span>
