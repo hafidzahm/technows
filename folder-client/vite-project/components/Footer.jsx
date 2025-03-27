@@ -16,7 +16,7 @@ export default function Footer() {
     <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-600">
       <li>
         <Link to="https://github.com/NicolaDeastra/The-Lazy-Media-api" className="hover:underline me-4 md:me-6">
-        Source API by The Lazy Monkey API (Unofficial)
+        Source API by The Lazy Monday API (Unofficial)
         </Link>
       </li>
     </ul>
