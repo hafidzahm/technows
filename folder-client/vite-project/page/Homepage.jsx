@@ -11,7 +11,6 @@ import Swal from "sweetalert2";
 export default function Homepage() {
   // const [news, setNews] = useState([])
   const [isLoading, setIsLoading] = useState(false);
-  const [isSaving, setIsSaving] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   let navigate = useNavigate();
   const dispatch = useDispatch();
@@ -79,7 +78,6 @@ export default function Homepage() {
     try {
       let { id } = key;
       console.log(key);
-      setIsSaving(true);
       console.log(bookmarks, "<----bookmarks");
       const bookmarkKey = bookmarks.map((el) => el.key);
       console.log(bookmarkKey, "<----isExist");
@@ -104,7 +102,6 @@ export default function Homepage() {
         }
       );
       console.log(response);
-      setIsSaving(false);
       navigate("/bookmarks");
     } catch (error) {
       console.log(error);

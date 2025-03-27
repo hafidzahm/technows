@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import http from "../helper/http";
 import CardBookmark from "../components/CardBookmark";
 import Swal from "sweetalert2";
@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBookmarksSuccess } from "../store/bookmarksSlice";
 
 export default function Bookmarks() {
-  // const [data, setData] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
     getMyBookmark();
@@ -25,7 +24,6 @@ export default function Bookmarks() {
         },
       });
       console.log(response);
-      // setData(response.data);
       dispatch(fetchBookmarksSuccess(response.data));
     } catch (error) {
       console.log(error);
