@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router";
 import http from "../helper/http";
 import Swal from "sweetalert2";
+import { useSelector } from "react-redux";
 export default function Details() {
   let [params, setParams] = useSearchParams();
   let [isLoading, setIsLoading] = useState(false);
@@ -9,6 +10,9 @@ export default function Details() {
   let [content, setContent] = useState([]);
   let [title, setTitle] = useState("");
   let navigate = useNavigate();
+  const bookmarks = useSelector(function (state) {
+    return state.bookmarks.data
+  })
   useEffect(() => {
     getDetailById();
   }, []);
@@ -39,6 +43,22 @@ export default function Details() {
     try {
       setIsSaving(true)
       console.log(params.get("key"));
+      console.log(bookmarks, "<----bookmarks");
+      const bookmarkKey = bookmarks.map((el) => el.key);
+      console.log(bookmarkKey, "<----isExist");
+
+      console.log(bookmarkKey[0], params.get("key"));
+
+      if (bookmarkKey[0] === params.get("key")) {
+        setIsSaving(false)
+        Swal.fire({
+          title: "Ups!",
+          text: `Berita ini sudah ada di bookmarks`,
+          icon: "info",
+        });
+      
+        return
+      }
       let token = localStorage.getItem('access_token')
       let response = await http.post(`/bookmarks?key=${params.get("key")}`, {}, {
        headers: {
