@@ -365,6 +365,40 @@ _response (401)_
 Description:
 - delete bookmark saved by user
 ## Request Headers
+
+> 'Authorization' : '`Bearer <your token>`'
+
+> 'Content-Type': '`<application/json>`'
+
+_response (200) SUCCESS_
+```json
+{
+    "message": "Bookmark success deleted."
+}
+```
+OR
+_attempt to delete other user bookmark response (403)_
+```json
+{
+    "message": "You are not authorized"
+}
+```
+OR
+_error bookmarkId not found response (404)_
+```json
+{
+    "message": "Bookmark not found"
+}
+```
+OR
+_without login / invalid token authorization bearer(401)_
+
+```json
+{
+    "message": "Invalid token"
+}
+```
+
 ## 9. PUT /bookmarks/:bookmarkId
 Description:
 - change statusRead bookmark saved by user
@@ -388,7 +422,7 @@ _response (200) SUCCESS_
 }
 ```
 OR
-_attempt to delete other user bookmark response (403)_
+_attempt to change other user bookmark response (403)_
 ```json
 {
     "message": "You are not authorized"
