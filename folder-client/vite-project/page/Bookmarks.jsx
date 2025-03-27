@@ -33,20 +33,25 @@ export default function Bookmarks() {
 
 
   async function changeStatus(body) {
-    console.log(body);
-    let { id } = body;
-    let token = localStorage.getItem("access_token");
-    let response = await http.put(
-      `/bookmarks/${id}`,
-      {},
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    console.log(response);
-    dispatch(getMyBookmark());
+    try {
+      console.log(body);
+      let { id } = body;
+      let token = localStorage.getItem("access_token");
+      let response = await http.put(
+        `/bookmarks/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response);
+      dispatch(getMyBookmark());
+    } catch (error) {
+      console.log(error);
+    }
+   
   }
   async function deleteBookmark(body) {
     try {
