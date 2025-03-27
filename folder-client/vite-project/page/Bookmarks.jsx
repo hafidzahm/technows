@@ -3,32 +3,33 @@ import http from "../helper/http";
 import CardBookmark from "../components/CardBookmark";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBookmarksSuccess } from "../store/bookmarksSlice";
+import {getMyBookmark } from "../store/bookmarksSlice";
 
 export default function Bookmarks() {
   const dispatch = useDispatch();
   useEffect(() => {
-    getMyBookmark();
+    // getMyBookmark();
+    dispatch(getMyBookmark());
   }, []);
 
   const data = useSelector(function(state) {
     return state.bookmarks.data
   })
 
-  async function getMyBookmark() {
-    try {
-      let token = localStorage.getItem("access_token");
-      let response = await http.get("/bookmarks", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      console.log(response);
-      dispatch(fetchBookmarksSuccess(response.data));
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // async function getMyBookmark() {
+  //   try {
+  //     let token = localStorage.getItem("access_token");
+  //     let response = await http.get("/bookmarks", {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+  //     console.log(response);
+  //     dispatch(fetchBookmarksSuccess(response.data));
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   function submitRead(body) {
     console.log(body);
@@ -48,7 +49,7 @@ export default function Bookmarks() {
       }
     );
     console.log(response);
-    getMyBookmark();
+    dispatch(getMyBookmark());
   }
   async function deleteBookmark(body) {
     try {
@@ -68,7 +69,7 @@ export default function Bookmarks() {
           },
         });
         console.log(response);
-        getMyBookmark();
+        dispatch(getMyBookmark());
         Swal.fire("Bookmark berhasil dihapus.", "", "success");
       } else if (result.isDenied) {
         Swal.fire("Bookmark tidak jadi dihapus", "", "info");

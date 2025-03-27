@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { incremented, incrementedBy } from "../store/counterSlice"
 import { fetchNewsSuccess } from "../store/NewsSlice";
 import Swal from "sweetalert2";
+import { getMyBookmark } from "../store/bookmarksSlice";
 
 export default function Homepage() {
   // const [news, setNews] = useState([])
@@ -16,6 +17,7 @@ export default function Homepage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getMyBookmark())
     fetchData();
     login();
   }, [isLogin]);

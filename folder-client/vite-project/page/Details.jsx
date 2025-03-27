@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router";
 import http from "../helper/http";
 import Swal from "sweetalert2";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getMyBookmark } from "../store/bookmarksSlice";
 export default function Details() {
   let [params, setParams] = useSearchParams();
   let [isLoading, setIsLoading] = useState(false);
@@ -10,10 +11,12 @@ export default function Details() {
   let [content, setContent] = useState([]);
   let [title, setTitle] = useState("");
   let navigate = useNavigate();
+  let dispatch = useDispatch();
   const bookmarks = useSelector(function (state) {
     return state.bookmarks.data
   })
   useEffect(() => {
+    dispatch(getMyBookmark());
     getDetailById();
   }, []);
 
