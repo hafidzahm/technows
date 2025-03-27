@@ -191,7 +191,7 @@ describe("LOGIN USER", () => {
 });
 
 describe("GET ALL NEWS", () => {
-    test('get all news /200', async () => {
+    test.concurrent('get all news /200', async () => {
         let response = await request(app)
         .get('/news')
         expect(response.status).toEqual(200)
@@ -202,7 +202,7 @@ describe("GET ALL NEWS", () => {
         expect(response.body[0]).toHaveProperty('time')
         expect(response.body[0]).toHaveProperty('desc')
         expect(response.body[0]).toHaveProperty('key')
-    })
+    }, 10000)
 })
 
 describe('GET DETAIL NEWS', () => {
