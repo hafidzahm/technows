@@ -31,9 +31,6 @@ export default function Bookmarks() {
   //   }
   // }
 
-  function submitRead(body) {
-    console.log(body);
-  }
 
   async function changeStatus(body) {
     console.log(body);
@@ -86,7 +83,6 @@ export default function Bookmarks() {
           <CardBookmark
             key={el.id}
             data={el}
-            submitRead={submitRead}
             changeStatus={changeStatus}
             deleteBookmark={deleteBookmark}
           />
