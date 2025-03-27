@@ -49,7 +49,9 @@ export default function Details() {
 
       console.log(bookmarkKey[0], params.get("key"));
 
-      if (bookmarkKey[0] === params.get("key")) {
+
+      console.log(bookmarkKey.find(el => el === params.get('key')), "<----Bookmarks");
+      if(bookmarkKey.find(el => el === params.get('key'))){
         setIsSaving(false)
         Swal.fire({
           title: "Ups!",

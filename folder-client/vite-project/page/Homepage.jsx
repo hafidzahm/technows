@@ -80,14 +80,15 @@ export default function Homepage() {
       console.log(key);
       console.log(bookmarks, "<----bookmarks");
       const bookmarkKey = bookmarks.map((el) => el.key);
-      console.log(bookmarkKey, "<----isExist");
+      console.log(bookmarkKey.find(el => el === id), "<----Bookmarks");
+      if(bookmarkKey.find(el => el === id)){
 
-      if (bookmarkKey[0] === id) {
         Swal.fire({
           title: "Ups!",
           text: `Berita ini sudah ada di bookmarks`,
           icon: "info",
         });
+      
         return
       }
       let token = localStorage.getItem("access_token");
