@@ -16,7 +16,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/", (req, res, next) => {
-  res.json({ message: "Hello world" });
+  res.json({
+    message: "Welcome to TechNows API",
+    documentation:
+      "https://github.com/hafidzahm/technows/tree/main/folder-server",
+  });
 });
 
 app.post("/users", UserController.registerUser);
