@@ -114,13 +114,9 @@ export default function Homepage() {
   }
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 w-full max-w-4xl m-auto p-5 gap-5 min-h-screen">
-        {/* <div>count {counter}</div>
-            <button onClick={add}>increment</button> */}
-        {isLoading ? (
-          <div className="text-gray-700">Loading...</div>
-        ) : (
-          news.map((el) => {
+      {!isLoading ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 w-full max-w-4xl m-auto p-5 gap-5 min-h-screen">
+          {news.map((el) => {
             return (
               <Card
                 key={el.key}
@@ -129,9 +125,13 @@ export default function Homepage() {
                 saveKey={saveNews}
               />
             );
-          })
-        )}
-      </div>
+          })}
+        </div>
+      ) : (
+        <div className="min-h-screen">
+          <h1 className="text-gray-700 text-center">Loading...</h1>
+        </div>
+      )}
     </>
   );
 }
