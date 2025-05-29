@@ -13,8 +13,8 @@ export default function Details() {
   let navigate = useNavigate();
   let dispatch = useDispatch();
   const bookmarks = useSelector(function (state) {
-    return state.bookmarks.data
-  })
+    return state.bookmarks.data;
+  });
   useEffect(() => {
     dispatch(getMyBookmark());
     getDetailById();
@@ -44,7 +44,7 @@ export default function Details() {
   }
   async function onBookmarks() {
     try {
-      setIsSaving(true)
+      setIsSaving(true);
       console.log(params.get("key"));
       console.log(bookmarks, "<----bookmarks");
       const bookmarkKey = bookmarks.map((el) => el.key);
@@ -52,28 +52,34 @@ export default function Details() {
 
       console.log(bookmarkKey[0], params.get("key"));
 
-
-      console.log(bookmarkKey.find(el => el === params.get('key')), "<----Bookmarks");
-      if(bookmarkKey.find(el => el === params.get('key'))){
-        setIsSaving(false)
+      console.log(
+        bookmarkKey.find((el) => el === params.get("key")),
+        "<----Bookmarks"
+      );
+      if (bookmarkKey.find((el) => el === params.get("key"))) {
+        setIsSaving(false);
         Swal.fire({
           title: "Ups!",
           text: `Berita ini sudah ada di bookmarks`,
           icon: "info",
         });
-      
-        return
+
+        return;
       }
-      let token = localStorage.getItem('access_token')
-      let response = await http.post(`/bookmarks?key=${params.get("key")}`, {}, {
-       headers: {
-           'Authorization': `Bearer ${token}`
-       },
-       timeout: 10000
-      })
-      console.log(response);  
-      setIsSaving(false)
-      navigate("/bookmarks")
+      let token = localStorage.getItem("access_token");
+      let response = await http.post(
+        `/bookmarks?key=${params.get("key")}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          timeout: 10000,
+        }
+      );
+      console.log(response);
+      setIsSaving(false);
+      navigate("/bookmarks");
     } catch (error) {
       console.log(error);
       if (error.status === 401) {
@@ -95,7 +101,7 @@ export default function Details() {
   }
 
   return (
-    <div className="min-h-screen text-gray-700">
+    <div className="min-h-screen p-5 text-gray-700">
       {isLoading ? (
         <div className=" w-10 m-auto">
           <span>Loading...</span>
@@ -103,27 +109,31 @@ export default function Details() {
       ) : (
         <div className="max-w-2xl m-auto">
           <div className="flex flex-row gap-3">
-          <button
-            onClick={onSummarize}
-            className=" px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
-          >
-            Summarize with AI
-          </button>
-          <button
-            onClick={onBookmarks}
-            className=" px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300"
-          >
-            {isSaving ? "Memproses..." : "Save to Bookmarks"}
-          </button>
+            <button
+              onClick={onSummarize}
+              className=" px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+            >
+              Summarize with AI
+            </button>
+            <button
+              onClick={onBookmarks}
+              className=" px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300"
+            >
+              {isSaving ? "Memproses..." : "Save to Bookmarks"}
+            </button>
           </div>
-          
+
           <div className="text-4xl mt-5">{title}</div>
-          <div className=" border border-gray-500 mt-5 bg-gray-100">
+          <div className="p-2 border border-gray-500 mt-5 bg-gray-100">
             {content?.map((el, index) => {
               if (el.startsWith("http")) {
                 return <img key={index} src={el} className="p-5"></img>;
               } else {
-                return <div key={index} className="p-5">{el}</div>;
+                return (
+                  <div key={index} className="p-5">
+                    {el}
+                  </div>
+                );
               }
             })}
           </div>
