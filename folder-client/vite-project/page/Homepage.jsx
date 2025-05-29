@@ -17,7 +17,7 @@ export default function Homepage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMyBookmark())
+    dispatch(getMyBookmark());
     fetchData();
     login();
   }, [isLogin]);
@@ -82,16 +82,18 @@ export default function Homepage() {
       console.log(key);
       console.log(bookmarks, "<----bookmarks");
       const bookmarkKey = bookmarks.map((el) => el.key);
-      console.log(bookmarkKey.find(el => el === id), "<----Bookmarks");
-      if(bookmarkKey.find(el => el === id)){
-
+      console.log(
+        bookmarkKey.find((el) => el === id),
+        "<----Bookmarks"
+      );
+      if (bookmarkKey.find((el) => el === id)) {
         Swal.fire({
           title: "Ups!",
           text: `Berita ini sudah ada di bookmarks`,
           icon: "info",
         });
-      
-        return
+
+        return;
       }
       let token = localStorage.getItem("access_token");
       let response = await http.post(
@@ -112,7 +114,7 @@ export default function Homepage() {
   }
   return (
     <>
-      <div className="flex flex-row flex-wrap justify-center w-5xl gap-5 m-auto min-h-screen">
+      <div className="grid bg-amber-200 grid-cols-1 p-5 gap-5 min-h-screen">
         {/* <div>count {counter}</div>
             <button onClick={add}>increment</button> */}
         {isLoading ? (

@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const http = axios.create({
-    baseURL: 'https://ch01.hafizh.web.id',
-    timeout: 6000,
-  });
+  baseURL: import.meta.env.VITE_BASE_URL,
+  timeout: 6000,
+});
 
 export default http;
