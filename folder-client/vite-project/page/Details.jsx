@@ -107,7 +107,7 @@ export default function Details() {
           <span>Loading...</span>
         </div>
       ) : (
-        <div className="max-w-2xl m-auto">
+        <div className="max-w-4xl m-auto">
           <div className="flex flex-row gap-3">
             <button
               onClick={onSummarize}
