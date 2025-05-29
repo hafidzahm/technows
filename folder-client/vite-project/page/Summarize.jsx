@@ -37,23 +37,42 @@ export default function Summarize() {
     }
   }
   return (
-    <div className="min-h-screen">
-    {Object.keys(data).length > 1 ? <div className="w-2xl m-auto border-gray-500 bg-gray-200 p-5">
-        <div className="text-2xl mb-3">Hasil rangkuman:</div>
-      <div className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300"><span>Kapan berita tersebut terjadi atau diberitakan?</span></div>
-        <p>{data.when}</p>
-        <div className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300"><span>Siapa target, objek, atau narasumber dari berita tersebut?</span></div>
-        <p>{data.who}</p>
-        <div className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300"><span>Apa target, atau objek yang diberitakan?</span></div>
-        <p>{data.what}</p>
-        <div className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300"><span>Apa alasan topik tersebut menarik untuk dibahas?</span></div>
-        <p>{data.why}</p>
-        <div className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300"><span>Dimana tempat objek diberitakan?</span></div>
-        <p>{data.where}</p>
-        <div className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300"><span>Spesifikasi teknologi atau objeknya seperti apa?</span></div>
-        <p>{data.how}</p>
-      </div> : <div className="w-100 text-gray-700 m-auto">Tunggu sebentar... Sedang merangkum berita..</div>} 
-      
+    <div className="min-h-screen p-5">
+      {Object.keys(data).length > 1 ? (
+        <div className="max-w-4xl m-auto border-gray-500 bg-gray-200 p-5">
+          <div className="text-2xl mb-3">Hasil rangkuman:</div>
+          <div className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300">
+            <span>Kapan berita tersebut terjadi atau diberitakan?</span>
+          </div>
+          <p>{data.when}</p>
+          <div className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300">
+            <span>
+              Siapa target, objek, atau narasumber dari berita tersebut?
+            </span>
+          </div>
+          <p>{data.who}</p>
+          <div className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300">
+            <span>Apa target, atau objek yang diberitakan?</span>
+          </div>
+          <p>{data.what}</p>
+          <div className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300">
+            <span>Apa alasan topik tersebut menarik untuk dibahas?</span>
+          </div>
+          <p>{data.why}</p>
+          <div className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300">
+            <span>Dimana tempat objek diberitakan?</span>
+          </div>
+          <p>{data.where}</p>
+          <div className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300">
+            <span>Spesifikasi teknologi atau objeknya seperti apa?</span>
+          </div>
+          <p>{data.how}</p>
+        </div>
+      ) : (
+        <div className="w-full text-center text-gray-700 m-auto">
+          <h1>Tunggu sebentar... Sedang merangkum berita..</h1>
+        </div>
+      )}
     </div>
   );
 }
