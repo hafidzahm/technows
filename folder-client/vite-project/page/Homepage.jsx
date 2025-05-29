@@ -114,7 +114,7 @@ export default function Homepage() {
   }
   return (
     <>
-      <div className="grid bg-amber-200 grid-cols-1 p-5 gap-5 min-h-screen">
+      <div className="grid bg-amber-200 grid-cols-1 md:grid-cols-2 p-5 gap-5 min-h-screen">
         {/* <div>count {counter}</div>
             <button onClick={add}>increment</button> */}
         {isLoading ? (
