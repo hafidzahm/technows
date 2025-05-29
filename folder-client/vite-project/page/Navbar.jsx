@@ -18,14 +18,13 @@ export default function Navbar() {
 
   function onLogout() {
     localStorage.removeItem("access_token");
-    setLogin(false)
-    navigate('/login')
+    setLogin(false);
+    navigate("/login");
   }
   return (
     <>
       <nav className="bg-white border-gray-200">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          
           <Link
             to={"/"}
             className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -62,21 +61,23 @@ export default function Navbar() {
           <div className="hidden w-full md:block md:w-auto" id="navbar-default">
             {login ? (
               <>
-                <ul className="font-medium flex flex-row p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
-
+                <ul className="font-medium flex flex-col gap-2 p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
                   <Link
                     to={"/"}
-                    className="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0"
+                    className="block py-2 px-3 text-center text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0"
                   >
                     News
                   </Link>
                   <Link
                     to={"/bookmarks"}
-                    className="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 "
+                    className="block py-2 px-3 text-center text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 "
                   >
                     My Bookmarks
                   </Link>
-                  <button onClick={onLogout} className="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 ">
+                  <button
+                    onClick={onLogout}
+                    className="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 "
+                  >
                     Logout
                   </button>
                 </ul>
@@ -84,7 +85,7 @@ export default function Navbar() {
             ) : (
               <Link
                 to={"/login"}
-                className="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0"
+                className="block py-2 px-3 text-center text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0"
               >
                 Login
               </Link>
