@@ -3,7 +3,7 @@ import http from "../helper/http";
 import CardBookmark from "../components/CardBookmark";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
-import {getMyBookmark } from "../store/bookmarksSlice";
+import { getMyBookmark } from "../store/bookmarksSlice";
 
 export default function Bookmarks() {
   const dispatch = useDispatch();
@@ -12,9 +12,9 @@ export default function Bookmarks() {
     dispatch(getMyBookmark());
   }, []);
 
-  const data = useSelector(function(state) {
-    return state.bookmarks.data
-  })
+  const data = useSelector(function (state) {
+    return state.bookmarks.data;
+  });
 
   // async function getMyBookmark() {
   //   try {
@@ -30,7 +30,6 @@ export default function Bookmarks() {
   //     console.log(error);
   //   }
   // }
-
 
   async function changeStatus(body) {
     try {
@@ -51,7 +50,6 @@ export default function Bookmarks() {
     } catch (error) {
       console.log(error);
     }
-   
   }
   async function deleteBookmark(body) {
     try {
@@ -81,24 +79,23 @@ export default function Bookmarks() {
     }
   }
   return (
-    <div className="min-h-screen">
- <div className="flex flex-row flex-wrap w-5xl m-auto justify-center gap-2">
-      {data.length > 0 ? data.map((el) => {
-        return (
-          <CardBookmark
-            key={el.id}
-            data={el}
-            changeStatus={changeStatus}
-            deleteBookmark={deleteBookmark}
-          />
-        );
-      })
-    :
-    <div className="text-center mt-10">
-      <h1 className="text-gray-700">Bookmark Kosong</h1>
-      </div>}
+    <div className="min-h-screen grid grid-cols-1 md:grid-cols-2 w-full max-w-4xl m-auto p-5 gap-5 ">
+      {data.length > 0 ? (
+        data.map((el) => {
+          return (
+            <CardBookmark
+              key={el.id}
+              data={el}
+              changeStatus={changeStatus}
+              deleteBookmark={deleteBookmark}
+            />
+          );
+        })
+      ) : (
+        <div className="text-center mt-10">
+          <h1 className="text-gray-700">Bookmark Kosong</h1>
+        </div>
+      )}
     </div>
-    </div>
-   
   );
 }
